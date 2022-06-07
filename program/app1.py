@@ -35,10 +35,14 @@ def gen_pass(n):
         print("\t",i+1, " --- ", l[i])
     
 
-try:
-    n = int(input("\tLength of Password: "))
-    gen_pass(n)
-except ValueError:
-    print(bcolors.FAIL + "Entered Value should be integer only")
-    print("Restart the program again...")
-    pass
+
+while True:
+    try:
+        n = int(input("\tLength of Password: "))
+        gen_pass(n)
+        break
+    except ValueError:
+        print(bcolors.FAIL + "Entered Value should be integer only")
+        print("Restarting the program...")
+        print(bcolors.OKBLUE + "")
+        pass
