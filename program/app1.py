@@ -1,4 +1,5 @@
 import itertools as it
+import random
 
 
 class bcolors:
@@ -17,10 +18,10 @@ print(bcolors.OKBLUE + "Starting Password Generator...")
 print("")
 
 characters = {
-    "uppercase": ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
-    "lowercase": ['abcdefghijklmnopqyrstuvwxyz'],
-    "numbers": ['0123456789'],
-    "symbols": ['!@#$&*?_-'],
+    "Uppercases": ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
+    "Lowercases": ['abcdefghijklmnopqyrstuvwxyz'],
+    "Numbers": ['0123456789'],
+    "Symbols": ['!@#$&*?_-'],
 }
 
 def gen_pass(n):
@@ -43,10 +44,20 @@ def gen_pass(n):
             print(bcolors.OKBLUE + "")        
      
      ## Generating password with selected combination
-    s_comb = l[c_type - 1] # getting selected combination
-    s_comb_l = [i for i in list(l[c_type - 1])]
+    s_comb_l = [i for i in list(l[c_type - 1])] # selected character combination list
     print(s_comb_l)
-    
+    c_per_pass = n // len(s_comb_l)
+    extra_c = n - (c_per_pass * len(s_comb_l))
+    password_l = []
+
+    for i in range(0, len(s_comb_l)):
+        x = s_comb_l[i]
+        z = characters[x][0]
+        l = [char for char in z]
+        c =  random.choices(l, k = c_per_pass)
+        password_l.append(c[0])
+        print(password_l)
+               
 
 
 while True:
