@@ -67,9 +67,11 @@ def gen_pass(n):
         all_char.extend(l)
         c =  random.choices(l, k = c_per_pass)
         password_l.extend(c)
-        print(password_l)
-    print(all_char)
-               
+    e_c = random.choices(all_char, k = extra_c)
+    password_l.extend(e_c)
+    print(password_l)
+    random.shuffle(password_l)      
+    print(password_l) 
 
 
 gen_pass(n)
