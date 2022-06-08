@@ -24,6 +24,16 @@ characters = {
     "Symbols": ['!@#$&*?_-'],
 }
 
+while True:
+    try:
+        n = int(input("\tLength of Password: "))
+        break
+    except ValueError:
+        print(bcolors.FAIL + "Entered Value should be integer only")
+        print("Restarting the program...")
+        print(bcolors.OKBLUE + "")
+        pass
+
 def gen_pass(n):
     print(bcolors.OKGREEN + "Select Character type number from the list: ")
     arr = ["Numbers", "Uppercases", "Lowercases", "Symbols"]
@@ -49,24 +59,17 @@ def gen_pass(n):
     c_per_pass = n // len(s_comb_l)
     extra_c = n - (c_per_pass * len(s_comb_l))
     password_l = []
-
+    all_char = []
     for i in range(0, len(s_comb_l)):
         x = s_comb_l[i]
         z = characters[x][0]
         l = [char for char in z]
+        all_char.extend(l)
         c =  random.choices(l, k = c_per_pass)
-        password_l.append(c[0])
+        password_l.extend(c)
         print(password_l)
+    print(all_char)
                
 
 
-while True:
-    try:
-        n = int(input("\tLength of Password: "))
-        gen_pass(n)
-        break
-    except ValueError:
-        print(bcolors.FAIL + "Entered Value should be integer only")
-        print("Restarting the program...")
-        print(bcolors.OKBLUE + "")
-        pass
+gen_pass(n)
