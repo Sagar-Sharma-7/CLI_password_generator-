@@ -1,5 +1,6 @@
 import itertools as it
 import random
+import pyperclip 
 
 
 class bcolors:
@@ -69,9 +70,11 @@ def gen_pass(n):
         password_l.extend(c)
     e_c = random.choices(all_char, k = extra_c)
     password_l.extend(e_c)
-    print(password_l)
-    random.shuffle(password_l)      
-    print(password_l) 
+    random.shuffle(password_l)
+    password = "".join(password_l) 
+    print(bcolors.HEADER+ "Your password: ", password)
+    pyperclip.copy(password)
+    print(bcolors.OKCYAN+ "Your password is copied to your clipboard.")
 
 
 gen_pass(n)
